@@ -1,0 +1,2383 @@
+﻿<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/15/2024 2:05:14 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ASEM"
+  DTS:CreatorName="ASEM\aseme"
+  DTS:DTSID="{ADF98B07-E58A-49E0-8070-DE2BB8C607DD}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="7"
+  DTS:VersionGUID="{14724446-BAE0-47CC-8024-B008D83AFEFC}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Loading Room data from SRC to STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{dd104fe6-8ef7-43e6-92a3-bc15d84bdbd1}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loading Room data from SRC to STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Loading Room data from SRC to STG\DES_STG_Room"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DES_STG_Room"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[Room]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].Columns[Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].Columns[Capacity]"
+                      cachedDataType="i4"
+                      cachedName="Capacity"
+                      externalMetadataColumnId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].ExternalColumns[Capacity]"
+                      lineageId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Match Output].Columns[Capacity]" />
+                    <inputColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].Columns[PricePerNight]"
+                      cachedDataType="numeric"
+                      cachedName="PricePerNight"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].ExternalColumns[PricePerNight]"
+                      lineageId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Match Output].Columns[PricePerNight]" />
+                    <inputColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].ExternalColumns[TypeName]"
+                      lineageId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Match Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].Columns[RoomID]"
+                      cachedDataType="i4"
+                      cachedName="RoomID"
+                      externalMetadataColumnId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].ExternalColumns[RoomNr]"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[RoomID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].ExternalColumns[RoomNr]"
+                      dataType="i4"
+                      name="RoomNr" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].ExternalColumns[TypeName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TypeName" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].ExternalColumns[Capacity]"
+                      dataType="i4"
+                      name="Capacity" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input].ExternalColumns[PricePerNight]"
+                      dataType="numeric"
+                      name="PricePerNight"
+                      precision="10"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room data from SRC to STG\DES_STG_Room.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\DES_STG_Room.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room data from SRC to STG\DES_STG_Room.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Room data from SRC to STG\Get needed data from room type"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get needed data from room type"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [SRC].[RoomType]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [SRC].[RoomType]) [refTable]
+where [refTable].[TypeID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="TypeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Description" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="PricePerNight" dataType="DT_NUMERIC" length="0" precision="10" scale="2" codePage="0"/&gt;&lt;referenceColumn name="Capacity" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[TypeID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading Room data from SRC to STG\Get needed data from room type.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading Room data from SRC to STG\Get needed data from room type.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Room data from SRC to STG\Get needed data from room type.Inputs[Lookup Input].Columns[TypeID]"
+                      cachedDataType="i4"
+                      cachedName="TypeID"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[TypeID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">TypeID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Loading Room data from SRC to STG\Get needed data from room type.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Match Output].Columns[Capacity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Match Output].Columns[Capacity]"
+                      name="Capacity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Capacity</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Match Output].Columns[PricePerNight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Match Output].Columns[PricePerNight]"
+                      name="PricePerNight"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">PricePerNight</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Match Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="50"
+                      lineageId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Match Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Name</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Loading Room data from SRC to STG\Get needed data from room type.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Loading Room data from SRC to STG\Get needed data from room type.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Room data from SRC to STG\SRC_Room"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC_Room"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[SRC].[Room]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading Room data from SRC to STG\SRC_Room.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[HotelID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].ExternalColumns[HotelID]"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[HotelID]"
+                      name="HotelID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[RoomID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].ExternalColumns[RoomID]"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[RoomID]"
+                      name="RoomID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[TypeID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].ExternalColumns[TypeID]"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[TypeID]"
+                      name="TypeID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[Status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      length="20"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].ExternalColumns[HotelID]"
+                      dataType="i4"
+                      name="HotelID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].ExternalColumns[RoomID]"
+                      dataType="i4"
+                      name="RoomID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].ExternalColumns[TypeID]"
+                      dataType="i4"
+                      name="TypeID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Status" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[RoomID]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[RoomID]"
+                      name="RoomID" />
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[HotelID]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[HotelID]"
+                      name="HotelID" />
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[TypeID]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[TypeID]"
+                      name="TypeID" />
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Loading Room data from SRC to STG.Paths[Lookup Match Output]"
+              endId="Package\Loading Room data from SRC to STG\DES_STG_Room.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Loading Room data from SRC to STG\Get needed data from room type.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Loading Room data from SRC to STG.Paths[OLE DB Source Output]"
+              endId="Package\Loading Room data from SRC to STG\Get needed data from room type.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Loading Room data from SRC to STG\SRC_Room.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Loading Room Data From STG To DIM"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{a47d9b4b-c43f-4077-8405-7802ede695a0}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loading Room Data From STG To DIM"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Loading Room Data From STG To DIM\Adding SCD columns"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Adding SCD columns"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Start_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Start_Date]"
+                      name="Start_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)"2021-01-01"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)"2021-01-01"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[End_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[End_Date]"
+                      name="End_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)"9999-12-31"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)"9999-12-31"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Acrive_Flag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Acrive_Flag]"
+                      name="Acrive_Flag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression"> TRUE </property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression"> TRUE </property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Room Data From STG To DIM\Check changed values"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Check changed values"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Loading Room Data From STG To DIM\Check changed values.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[Capacity]"
+                      cachedDataType="i4"
+                      cachedName="Capacity"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Capacity]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Status"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Status]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[PricePerNight]"
+                      cachedDataType="numeric"
+                      cachedName="PricePerNight"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[PricePerNight]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[DIM_Capacity]"
+                      cachedDataType="i4"
+                      cachedName="DIM_Capacity"
+                      lineageId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Capacity]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[DIM_Price_Per_Night]"
+                      cachedDataType="numeric"
+                      cachedName="DIM_Price_Per_Night"
+                      cachedPrecision="18"
+                      lineageId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Price_Per_Night]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[DIM_Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="DIM_Status"
+                      lineageId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Status]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\Check changed values.Outputs[Matched rows]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Matched rows"
+                  synchronousInputId="Package\Loading Room Data From STG To DIM\Check changed values.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Status]} == #{Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Status]} &amp;&amp; #{Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Price_Per_Night]} == #{Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[PricePerNight]} &amp;&amp; #{Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Capacity]} == #{Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Capacity]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">DIM_Status == Status &amp;&amp; DIM_Price_Per_Night == PricePerNight &amp;&amp; DIM_Capacity == Capacity</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\Check changed values.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Loading Room Data From STG To DIM\Check changed values.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\Check changed values.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Loading Room Data From STG To DIM\Check changed values.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Check changed values.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\Check changed values.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Check changed values.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\Check changed values.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Room Data From STG To DIM\Close old record"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Close old record"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE DIM.Room
+SET end_date = GETDATE(), acive_flag = 0
+WHERE Room_Num = ?
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading Room Data From STG To DIM\Close old record.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading Room Data From STG To DIM\Close old record.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Close old record.Inputs[OLE DB Command Input].Columns[RoomNr]"
+                      cachedDataType="i4"
+                      cachedName="RoomNr"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\Close old record.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[RoomNr]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\Close old record.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">81</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\Close old record.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Loading Room Data From STG To DIM\Close old record.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\Close old record.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Loading Room Data From STG To DIM\Close old record.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Close old record.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\Close old record.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Close old record.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\Close old record.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DEST_DIM_Room"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DIM].[Room]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].Columns[Start_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Start_Date"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      lineageId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Start_Date]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].Columns[End_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      lineageId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[End_Date]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].Columns[Acrive_Flag]"
+                      cachedDataType="bool"
+                      cachedName="Acrive_Flag"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[acive_flag]"
+                      lineageId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Acrive_Flag]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].Columns[RoomNr]"
+                      cachedDataType="i4"
+                      cachedName="RoomNr"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[Room_Num]"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[RoomNr]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].Columns[TypeName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TypeName"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[Room_Type]"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[TypeName]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].Columns[Capacity]"
+                      cachedDataType="i4"
+                      cachedName="Capacity"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[Capacity]"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[Capacity]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].Columns[PricePerNight]"
+                      cachedDataType="numeric"
+                      cachedName="PricePerNight"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[Price_Per_Night]"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[PricePerNight]" />
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].Columns[Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Status"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[Status]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="end_date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[acive_flag]"
+                      dataType="bool"
+                      name="acive_flag" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[Room_Key]"
+                      dataType="i4"
+                      name="Room_Key" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[Room_Num]"
+                      dataType="i4"
+                      name="Room_Num" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[Room_Type]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="Room_Type" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[Capacity]"
+                      dataType="i4"
+                      name="Capacity" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[Price_Per_Night]"
+                      dataType="numeric"
+                      name="Price_Per_Night"
+                      precision="18" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input].ExternalColumns[Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Status" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Mathcing ids with DIM_Room"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DIM].[Room]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DIM].[Room]) [refTable]
+where [refTable].[Room_Num] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Room_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Room_Num" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Room_Type" dataType="DT_STR" length="50" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Capacity" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Price_Per_Night" dataType="DT_NUMERIC" length="0" precision="18" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="start_date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="end_date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="acive_flag" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[RoomNr]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Inputs[Lookup Input].Columns[RoomNr]"
+                      cachedDataType="i4"
+                      cachedName="RoomNr"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[RoomNr]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Room_Num</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Capacity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Capacity]"
+                      name="DIM_Capacity"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Capacity</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Price_Per_Night]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Price_Per_Night]"
+                      name="DIM_Price_Per_Night"
+                      precision="18"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Price_Per_Night</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="20"
+                      lineageId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Status]"
+                      name="DIM_Status"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Status</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC_STG_Room"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[Room]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * FROM STG_Hotel</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[RoomNr]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].ExternalColumns[RoomNr]"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[RoomNr]"
+                      name="RoomNr"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[TypeName]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].ExternalColumns[TypeName]"
+                      length="50"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[TypeName]"
+                      name="TypeName"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Capacity]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].ExternalColumns[Capacity]"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Capacity]"
+                      name="Capacity"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Status]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      length="20"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Status]"
+                      name="Status"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[PricePerNight]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].ExternalColumns[PricePerNight]"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[PricePerNight]"
+                      name="PricePerNight"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].ExternalColumns[RoomNr]"
+                      dataType="i4"
+                      name="RoomNr" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].ExternalColumns[TypeName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      name="TypeName" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].ExternalColumns[Capacity]"
+                      dataType="i4"
+                      name="Capacity" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].ExternalColumns[Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      name="Status" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].ExternalColumns[PricePerNight]"
+                      dataType="numeric"
+                      name="PricePerNight"
+                      precision="10"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[RoomNr]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[RoomNr]"
+                      name="RoomNr" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[TypeName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[TypeName]"
+                      name="TypeName" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[Capacity]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[Capacity]"
+                      name="Capacity" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[PricePerNight]"
+                      dataType="numeric"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[PricePerNight]"
+                      name="PricePerNight"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union updated Rooms with new"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 1].Columns[RoomNr]"
+                      cachedDataType="i4"
+                      cachedName="RoomNr"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[RoomNr]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[RoomNr]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 1].Columns[TypeName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TypeName"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[TypeName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[TypeName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 1].Columns[Capacity]"
+                      cachedDataType="i4"
+                      cachedName="Capacity"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Capacity]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[Capacity]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 1].Columns[Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Status"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 1].Columns[PricePerNight]"
+                      cachedDataType="numeric"
+                      cachedName="PricePerNight"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[PricePerNight]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[PricePerNight]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 1].Columns[DIM_Capacity]"
+                      cachedDataType="i4"
+                      cachedName="DIM_Capacity"
+                      lineageId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Capacity]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[DIM_Capacity]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 1].Columns[DIM_Price_Per_Night]"
+                      cachedDataType="numeric"
+                      cachedName="DIM_Price_Per_Night"
+                      cachedPrecision="18"
+                      lineageId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Price_Per_Night]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[DIM_Price_Per_Night]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 1].Columns[DIM_Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="DIM_Status"
+                      lineageId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output].Columns[DIM_Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[DIM_Status]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 2].Columns[RoomNr]"
+                      cachedDataType="i4"
+                      cachedName="RoomNr"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[RoomNr]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[RoomNr]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 2].Columns[TypeName]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="50"
+                      cachedName="TypeName"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[TypeName]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[TypeName]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 2].Columns[Capacity]"
+                      cachedDataType="i4"
+                      cachedName="Capacity"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Capacity]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[Capacity]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 2].Columns[Status]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="20"
+                      cachedName="Status"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[Status]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[Status]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 2].Columns[PricePerNight]"
+                      cachedDataType="numeric"
+                      cachedName="PricePerNight"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      lineageId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output].Columns[PricePerNight]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[PricePerNight]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[RoomNr]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[RoomNr]"
+                      name="RoomNr" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[TypeName]"
+                      codePage="1252"
+                      dataType="str"
+                      length="50"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[TypeName]"
+                      name="TypeName" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[Capacity]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[Capacity]"
+                      name="Capacity" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[Status]"
+                      name="Status" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[PricePerNight]"
+                      dataType="numeric"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[PricePerNight]"
+                      name="PricePerNight"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[DIM_Capacity]"
+                      dataType="i4"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[DIM_Capacity]"
+                      name="DIM_Capacity" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[DIM_Price_Per_Night]"
+                      dataType="numeric"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[DIM_Price_Per_Night]"
+                      name="DIM_Price_Per_Night"
+                      precision="18" />
+                    <outputColumn
+                      refId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[DIM_Status]"
+                      codePage="1252"
+                      dataType="str"
+                      length="20"
+                      lineageId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1].Columns[DIM_Status]"
+                      name="DIM_Status" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Loading Room Data From STG To DIM.Paths[Conditional Split Default Output]"
+              endId="Package\Loading Room Data From STG To DIM\Close old record.Inputs[OLE DB Command Input]"
+              name="Conditional Split Default Output"
+              startId="Package\Loading Room Data From STG To DIM\Check changed values.Outputs[Conditional Split Default Output]" />
+            <path
+              refId="Package\Loading Room Data From STG To DIM.Paths[Derived Column Output]"
+              endId="Package\Loading Room Data From STG To DIM\DEST_DIM_Room.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Loading Room Data From STG To DIM.Paths[Lookup Match Output]"
+              endId="Package\Loading Room Data From STG To DIM\Check changed values.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Loading Room Data From STG To DIM.Paths[Lookup No Match Output]"
+              endId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 2]"
+              name="Lookup No Match Output"
+              startId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Loading Room Data From STG To DIM.Paths[OLE DB Command Output]"
+              endId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Inputs[Union All Input 1]"
+              name="OLE DB Command Output"
+              startId="Package\Loading Room Data From STG To DIM\Close old record.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Loading Room Data From STG To DIM.Paths[OLE DB Source Output]"
+              endId="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Loading Room Data From STG To DIM\SRC_STG_Room.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Loading Room Data From STG To DIM.Paths[Union All Output 1]"
+              endId="Package\Loading Room Data From STG To DIM\Adding SCD columns.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\Loading Room Data From STG To DIM\Union updated Rooms with new.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG_Room"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{fd023c9d-2adf-4463-85e5-b6c210b7c91e}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG_Room"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C070ED65-C9C1-48A3-A0D8-E046CD137252}"
+          SQLTask:SqlStatementSource="Truncate table STG.Room" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{010c6ce1-d4bd-4965-ab01-e83681d7d677}"
+      DTS:From="Package\Truncate STG_Room"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Loading Room data from SRC to STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{b924fee5-189a-4867-9046-030b2519af50}"
+      DTS:From="Package\Loading Room data from SRC to STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Loading Room Data From STG To DIM" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="252.8,41.6"
+          Id="Package\Loading Room data from SRC to STG"
+          TopLeft="341.66665547424,174.40000090917" />
+        <NodeLayout
+          Size="258.4,41.6"
+          Id="Package\Loading Room Data From STG To DIM"
+          TopLeft="346.666655275558,270.600001673699" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Truncate STG_Room"
+          TopLeft="397.499986588956,68.6666667355431" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="485.899986588956,110.266666735543">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-17.8333311147161,64.133334173627"
+              Start="0,0"
+              End="-17.8333311147161,56.633334173627">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.0666670868135" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.0666670868135"
+                    Point2="0,32.0666670868135"
+                    Point3="-4,32.0666670868135" />
+                  <mssgle:LineSegment
+                    End="-13.8333311147161,32.0666670868135" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-13.8333311147161,32.0666670868135"
+                    Point2="-17.8333311147161,32.0666670868135"
+                    Point3="-17.8333311147161,36.0666670868135" />
+                  <mssgle:LineSegment
+                    End="-17.8333311147161,56.633334173627" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="471.966655374899,216.00000090917">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,54.6000007645291"
+              Start="0,0"
+              End="0,47.1000007645291">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,47.1000007645291" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Loading Room data from SRC to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="133.6,41.6"
+          Id="Package\Loading Room data from SRC to STG\SRC_Room"
+          TopLeft="454.166648619706,45.9333336983787" />
+        <NodeLayout
+          Size="228,41.6"
+          Id="Package\Loading Room data from SRC to STG\Get needed data from room type"
+          TopLeft="455,134" />
+        <EdgeLayout
+          Id="Package\Loading Room data from SRC to STG.Paths[OLE DB Source Output]"
+          TopLeft="520.966648619706,87.5333336983787">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="48.0333513802941,46.4666663016213"
+              Start="0,0"
+              End="48.0333513802941,38.9666663016213">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,19.2333331508106" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,19.2333331508106"
+                    Point2="0,23.2333331508106"
+                    Point3="4,23.2333331508106" />
+                  <mssgle:LineSegment
+                    End="44.0333513802941,23.2333331508106" />
+                  <mssgle:CubicBezierSegment
+                    Point1="44.0333513802941,23.2333331508106"
+                    Point2="48.0333513802941,23.2333331508106"
+                    Point3="48.0333513802941,27.2333331508106" />
+                  <mssgle:LineSegment
+                    End="48.0333513802941,38.9666663016213" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="160,41.6"
+          Id="Package\Loading Room data from SRC to STG\DES_STG_Room"
+          TopLeft="551,264" />
+        <EdgeLayout
+          Id="Package\Loading Room data from SRC to STG.Paths[Lookup Match Output]"
+          TopLeft="569,175.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="61.9999999999999,88.4"
+              Start="0,0"
+              End="61.9999999999999,80.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,40.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,40.2"
+                    Point2="0,44.2"
+                    Point3="4,44.2" />
+                  <mssgle:LineSegment
+                    End="57.9999999999999,44.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="57.9999999999999,44.2"
+                    Point2="61.9999999999999,44.2"
+                    Point3="61.9999999999999,48.2" />
+                  <mssgle:LineSegment
+                    End="61.9999999999999,80.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-17.1913867187501,49.2,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading Room data from SRC to STG\SRC_Room">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Loading Room Data From STG To DIM">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="164.8,41.6"
+          Id="Package\Loading Room Data From STG To DIM\DEST_DIM_Room"
+          TopLeft="582,623" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Loading Room Data From STG To DIM\Adding SCD columns"
+          TopLeft="562,522.8" />
+        <NodeLayout
+          Size="160.8,41.6"
+          Id="Package\Loading Room Data From STG To DIM\SRC_STG_Room"
+          TopLeft="495,69" />
+        <EdgeLayout
+          Id="Package\Loading Room Data From STG To DIM.Paths[Derived Column Output]"
+          TopLeft="650.4,564.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14.0000000000001,58.6"
+              Start="0,0"
+              End="14.0000000000001,51.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.3" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.3"
+                    Point2="0,29.3"
+                    Point3="4,29.3" />
+                  <mssgle:LineSegment
+                    End="10.0000000000001,29.3" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10.0000000000001,29.3"
+                    Point2="14.0000000000001,29.3"
+                    Point3="14.0000000000001,33.3" />
+                  <mssgle:LineSegment
+                    End="14.0000000000001,51.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="213.6,41.6"
+          Id="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room"
+          TopLeft="520,165.6" />
+        <EdgeLayout
+          Id="Package\Loading Room Data From STG To DIM.Paths[OLE DB Source Output]"
+          TopLeft="575.4,110.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="51.4,55"
+              Start="0,0"
+              End="51.4,47.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.5"
+                    Point2="0,27.5"
+                    Point3="4,27.5" />
+                  <mssgle:LineSegment
+                    End="47.4,27.5" />
+                  <mssgle:CubicBezierSegment
+                    Point1="47.4,27.5"
+                    Point2="51.4,27.5"
+                    Point3="51.4,31.5" />
+                  <mssgle:LineSegment
+                    End="51.4,47.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Loading Room Data From STG To DIM\Check changed values"
+          TopLeft="678,254.6" />
+        <EdgeLayout
+          Id="Package\Loading Room Data From STG To DIM.Paths[Lookup Match Output]"
+          TopLeft="661.066666666667,207.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="108.533333333333,47.4"
+              Start="0,0"
+              End="108.533333333333,39.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,15.1714498141264" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,15.1714498141264"
+                    Point2="0,19.1714498141264"
+                    Point3="4,19.1714498141264" />
+                  <mssgle:LineSegment
+                    End="104.533333333333,19.1714498141264" />
+                  <mssgle:CubicBezierSegment
+                    Point1="104.533333333333,19.1714498141264"
+                    Point2="108.533333333333,19.1714498141264"
+                    Point3="108.533333333333,23.1714498141264" />
+                  <mssgle:LineSegment
+                    End="108.533333333333,39.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="6.07527994791671,24.1714498141264,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\Loading Room Data From STG To DIM\Close old record"
+          TopLeft="695,349" />
+        <NodeLayout
+          Size="224.8,41.6"
+          Id="Package\Loading Room Data From STG To DIM\Union updated Rooms with new"
+          TopLeft="524,453.6" />
+        <EdgeLayout
+          Id="Package\Loading Room Data From STG To DIM.Paths[OLE DB Command Output]"
+          TopLeft="771.8,390.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-99.2666666666667,63"
+              Start="0,0"
+              End="-99.2666666666667,55.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,33.5328621908127" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,33.5328621908127"
+                    Point2="0,37.5328621908127"
+                    Point3="-4,37.5328621908127" />
+                  <mssgle:LineSegment
+                    End="-95.2666666666667,37.5328621908127" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-95.2666666666667,37.5328621908127"
+                    Point2="-99.2666666666667,37.5328621908127"
+                    Point3="-99.2666666666667,41.5328621908127" />
+                  <mssgle:LineSegment
+                    End="-99.2666666666667,55.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Room Data From STG To DIM.Paths[Lookup No Match Output]"
+          TopLeft="596.4,207.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,246.4"
+              Start="0,0"
+              End="0,238.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,238.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-55.80638671875,113.6453125,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Room Data From STG To DIM.Paths[Union All Output 1]"
+          TopLeft="636.4,495.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="14,27.6"
+              Start="0,0"
+              End="14,20.1">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,9.79999999999998" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,9.79999999999998"
+                    Point2="0,13.8"
+                    Point3="4,13.8" />
+                  <mssgle:LineSegment
+                    End="10,13.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="10,13.8"
+                    Point2="14,13.8"
+                    Point3="14,17.8" />
+                  <mssgle:LineSegment
+                    End="14,20.1" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Room Data From STG To DIM.Paths[Conditional Split Default Output]"
+          TopLeft="770.7,296.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="0,52.7999999999999"
+              Start="0,0"
+              End="0,45.2999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,45.2999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-70.61390625,16.8208984374999,141.2278125,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading Room Data From STG To DIM\DEST_DIM_Room">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading Room Data From STG To DIM\SRC_STG_Room">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading Room data from SRC to STG\Get needed data from room type">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[SRC].[RoomType]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading Room Data From STG To DIM\Mathcing ids with DIM_Room">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DIM].[Room]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading Room data from SRC to STG\DES_STG_Room">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

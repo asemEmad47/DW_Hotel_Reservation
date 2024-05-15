@@ -1,0 +1,820 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/15/2024 3:32:28 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ASEM"
+  DTS:CreatorName="ASEM\aseme"
+  DTS:DTSID="{A2C89F26-2292-4AF9-A6FF-0377E59CF8C1}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package1"
+  DTS:PackageType="5"
+  DTS:VersionBuild="1"
+  DTS:VersionGUID="{C572A972-29E1-449E-B5E0-15CEEF118026}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Data Flow Task"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{FB8BBD55-C91B-4634-A557-8C15D6A9FF2C}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Data Flow Task"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Data Flow Task\Dest_STG_Booking"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="Dest_STG_Booking"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[Booking]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Dest_STG_Booking.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].Columns[GuestID]"
+                      cachedDataType="i4"
+                      cachedName="GuestID"
+                      externalMetadataColumnId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[GuestID]"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[GuestID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].Columns[HotelID]"
+                      cachedDataType="i4"
+                      cachedName="HotelID"
+                      externalMetadataColumnId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[HotelID]"
+                      lineageId="Package\Data Flow Task\Get hotel id.Outputs[Lookup Match Output].Columns[HotelID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].Columns[RoomID]"
+                      cachedDataType="i4"
+                      cachedName="RoomID"
+                      externalMetadataColumnId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[RoomNum]"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[RoomID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].Columns[BookingID]"
+                      cachedDataType="i4"
+                      cachedName="BookingID"
+                      externalMetadataColumnId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[Booking_ID]"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[BookingID]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].Columns[CheckInDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CheckInDate"
+                      externalMetadataColumnId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[Check_In_Date]"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[CheckInDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].Columns[CheckOutDate]"
+                      cachedDataType="wstr"
+                      cachedLength="10"
+                      cachedName="CheckOutDate"
+                      externalMetadataColumnId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[Check_Out_Date]"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[CheckOutDate]" />
+                    <inputColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].Columns[TotalPrice]"
+                      cachedDataType="numeric"
+                      cachedName="TotalPrice"
+                      cachedPrecision="10"
+                      cachedScale="2"
+                      externalMetadataColumnId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[Total_Price]"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[TotalPrice]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[Booking_ID]"
+                      dataType="i4"
+                      name="Booking_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[RoomNum]"
+                      dataType="i4"
+                      name="RoomNum" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[GuestID]"
+                      dataType="i4"
+                      name="GuestID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[HotelID]"
+                      dataType="i4"
+                      name="HotelID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[Check_In_Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Check_In_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[Check_Out_Date]"
+                      dataType="wstr"
+                      length="10"
+                      name="Check_Out_Date" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input].ExternalColumns[Total_Price]"
+                      dataType="i4"
+                      name="Total_Price" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Dest_STG_Booking.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Dest_STG_Booking.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Dest_STG_Booking.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Dest_STG_Booking.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\Get hotel id"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Get hotel id"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [SRC].[Room]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [SRC].[Room]) [refTable]
+where [refTable].[RoomID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="RoomID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="HotelID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="TypeID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Status" dataType="DT_STR" length="20" precision="0" scale="0" codePage="1252"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[RoomID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\Get hotel id.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Data Flow Task\Get hotel id.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Data Flow Task\Get hotel id.Inputs[Lookup Input].Columns[RoomID]"
+                      cachedDataType="i4"
+                      cachedName="RoomID"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[RoomID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">RoomID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\Get hotel id.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Data Flow Task\Get hotel id.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get hotel id.Outputs[Lookup Match Output].Columns[HotelID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Data Flow Task\Get hotel id.Outputs[Lookup Match Output].Columns[HotelID]"
+                      name="HotelID"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">HotelID</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Get hotel id.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Data Flow Task\Get hotel id.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Data Flow Task\Get hotel id.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Data Flow Task\Get hotel id.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get hotel id.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Get hotel id.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\Get hotel id.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\Get hotel id.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Data Flow Task\SRC_SRC_Booking"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC_SRC_Booking"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[SRC].[Booking]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Data Flow Task\SRC_SRC_Booking.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[GuestID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[GuestID]"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[GuestID]"
+                      name="GuestID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[BookingID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[BookingID]"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[BookingID]"
+                      name="BookingID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[RoomID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[RoomID]"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[RoomID]"
+                      name="RoomID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[CheckInDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[CheckInDate]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[CheckInDate]"
+                      name="CheckInDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[CheckOutDate]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[CheckOutDate]"
+                      length="10"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[CheckOutDate]"
+                      name="CheckOutDate"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[TotalPrice]"
+                      dataType="numeric"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[TotalPrice]"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].Columns[TotalPrice]"
+                      name="TotalPrice"
+                      precision="10"
+                      scale="2"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[GuestID]"
+                      dataType="i4"
+                      name="GuestID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[BookingID]"
+                      dataType="i4"
+                      name="BookingID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[RoomID]"
+                      dataType="i4"
+                      name="RoomID" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[CheckInDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="CheckInDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[CheckOutDate]"
+                      dataType="wstr"
+                      length="10"
+                      name="CheckOutDate" />
+                    <externalMetadataColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output].ExternalColumns[TotalPrice]"
+                      dataType="numeric"
+                      name="TotalPrice"
+                      precision="10"
+                      scale="2" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[BookingID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[BookingID]"
+                      name="BookingID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[GuestID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[GuestID]"
+                      name="GuestID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[RoomID]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[RoomID]"
+                      name="RoomID" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[CheckInDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[CheckInDate]"
+                      name="CheckInDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[CheckOutDate]"
+                      dataType="wstr"
+                      length="10"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[CheckOutDate]"
+                      name="CheckOutDate" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[TotalPrice]"
+                      dataType="numeric"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[TotalPrice]"
+                      name="TotalPrice"
+                      precision="10"
+                      scale="2" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Data Flow Task.Paths[Lookup Match Output]"
+              endId="Package\Data Flow Task\Dest_STG_Booking.Inputs[OLE DB Destination Input]"
+              name="Lookup Match Output"
+              startId="Package\Data Flow Task\Get hotel id.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Data Flow Task.Paths[OLE DB Source Output]"
+              endId="Package\Data Flow Task\Get hotel id.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Data Flow Task\SRC_SRC_Booking.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG_Booking"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{883E3067-4992-4F77-AEDD-282843B4127F}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG_Booking"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C070ED65-C9C1-48A3-A0D8-E046CD137252}"
+          SQLTask:SqlStatementSource="TRUNCATE TABLE STG.Booking" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{03EB25F9-854B-415C-9996-6D9DD1791CA8}"
+      DTS:From="Package\Truncate STG_Booking"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Data Flow Task" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="150.4,41.6"
+          Id="Package\Data Flow Task"
+          TopLeft="382.499984800816,169.000001343091" />
+        <NodeLayout
+          Size="187.2,41.6"
+          Id="Package\Truncate STG_Booking"
+          TopLeft="383.333318101036,75.4000005992254" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="476.933318101036,117.000000599225">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-19.2333333002197,52.000000743866"
+              Start="0,0"
+              End="-19.2333333002197,44.500000743866">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,22.000000371933" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,22.000000371933"
+                    Point2="0,26.000000371933"
+                    Point3="-4,26.000000371933" />
+                  <mssgle:LineSegment
+                    End="-15.2333333002197,26.000000371933" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-15.2333333002197,26.000000371933"
+                    Point2="-19.2333333002197,26.000000371933"
+                    Point3="-19.2333333002197,30.000000371933" />
+                  <mssgle:LineSegment
+                    End="-19.2333333002197,44.500000743866" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Data Flow Task">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Data Flow Task\SRC_SRC_Booking"
+          TopLeft="409.999983708065,52.0000004132589" />
+        <NodeLayout
+          Size="131.2,41.6"
+          Id="Package\Data Flow Task\Get hotel id"
+          TopLeft="450.833315418827,153.400001219114" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[OLE DB Source Output]"
+          TopLeft="495.599983708065,93.6000004132589">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="20.8333317107624,59.8000008058548"
+              Start="0,0"
+              End="20.8333317107624,52.3000008058548">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.9000004029274" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.9000004029274"
+                    Point2="0,29.9000004029274"
+                    Point3="4,29.9000004029274" />
+                  <mssgle:LineSegment
+                    End="16.8333317107624,29.9000004029274" />
+                  <mssgle:CubicBezierSegment
+                    Point1="16.8333317107624,29.9000004029274"
+                    Point2="20.8333317107624,29.9000004029274"
+                    Point3="20.8333317107624,33.9000004029274" />
+                  <mssgle:LineSegment
+                    End="20.8333317107624,52.3000008058548" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <NodeLayout
+          Size="170.4,41.6"
+          Id="Package\Data Flow Task\Dest_STG_Booking"
+          TopLeft="458.333315120804,261.733335413403" />
+        <EdgeLayout
+          Id="Package\Data Flow Task.Paths[Lookup Match Output]"
+          TopLeft="516.433315418827,195.000001219114">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="27.0999997019768,66.7333341942893"
+              Start="0,0"
+              End="27.0999997019768,59.2333341942893">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,29.3666670971447" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,29.3666670971447"
+                    Point2="0,33.3666670971447"
+                    Point3="4,33.3666670971447" />
+                  <mssgle:LineSegment
+                    End="23.0999997019768,33.3666670971447" />
+                  <mssgle:CubicBezierSegment
+                    Point1="23.0999997019768,33.3666670971447"
+                    Point2="27.0999997019768,33.3666670971447"
+                    Point3="27.0999997019768,37.3666670971447" />
+                  <mssgle:LineSegment
+                    End="27.0999997019768,59.2333341942893" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-34.6413868677616,38.3666670971447,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\SRC_SRC_Booking">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Get hotel id">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[SRC].[Room]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Data Flow Task\Dest_STG_Booking">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

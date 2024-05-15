@@ -1,0 +1,2350 @@
+<?xml version="1.0"?>
+<DTS:Executable xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:refId="Package"
+  DTS:CreationDate="5/14/2024 9:19:37 PM"
+  DTS:CreationName="Microsoft.Package"
+  DTS:CreatorComputerName="ASEM"
+  DTS:CreatorName="ASEM\aseme"
+  DTS:DTSID="{942A5FA1-EF19-4E90-AB7A-C3EC2C28D058}"
+  DTS:ExecutableType="Microsoft.Package"
+  DTS:LastModifiedProductVersion="16.0.5467.0"
+  DTS:LocaleID="1033"
+  DTS:ObjectName="Package"
+  DTS:PackageType="5"
+  DTS:VersionBuild="19"
+  DTS:VersionGUID="{E5E2EB80-30FD-4039-8FA8-15943F0FA891}">
+  <DTS:Property
+    DTS:Name="PackageFormatVersion">8</DTS:Property>
+  <DTS:Variables />
+  <DTS:Executables>
+    <DTS:Executable
+      DTS:refId="Package\Loading hotel data from SRC to STG"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{BB78B23A-B98E-43B3-B131-8D09EB84ADB9}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loading hotel data from SRC to STG"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DEST_STG_Hotel"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[Hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].Columns[Address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Address"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].Columns[Stars]"
+                      cachedDataType="i4"
+                      cachedName="Stars"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Stars]"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Stars]" />
+                    <inputColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].Columns[HotelID]"
+                      cachedDataType="i4"
+                      cachedName="HotelID"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Hotel_ID]"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[HotelID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Hotel_ID]"
+                      dataType="i4"
+                      name="Hotel_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input].ExternalColumns[Stars]"
+                      dataType="i4"
+                      name="Stars" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC_HOTEL"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[SRC].[Hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[HotelID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[HotelID]"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[HotelID]"
+                      name="HotelID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      length="255"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      length="15"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="255"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Stars]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[Stars]"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[Stars]"
+                      name="Stars"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[CheckInTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[CheckInTime]"
+                      length="16"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[CheckInTime]"
+                      name="CheckInTime"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[CheckOutTime]"
+                      dataType="wstr"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[CheckOutTime]"
+                      length="16"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].Columns[CheckOutTime]"
+                      name="CheckOutTime"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[HotelID]"
+                      dataType="i4"
+                      name="HotelID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[Stars]"
+                      dataType="i4"
+                      name="Stars" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[CheckInTime]"
+                      dataType="wstr"
+                      length="16"
+                      name="CheckInTime" />
+                    <externalMetadataColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output].ExternalColumns[CheckOutTime]"
+                      dataType="wstr"
+                      length="16"
+                      name="CheckOutTime" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[HotelID]"
+                      dataType="i4"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[HotelID]"
+                      name="HotelID" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[Stars]"
+                      dataType="i4"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[Stars]"
+                      name="Stars" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[CheckInTime]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[CheckInTime]"
+                      name="CheckInTime" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[CheckOutTime]"
+                      dataType="wstr"
+                      length="16"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[CheckOutTime]"
+                      name="CheckOutTime" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Loading hotel data from SRC to STG.Paths[OLE DB Source Output]"
+              endId="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel.Inputs[OLE DB Destination Input]"
+              name="OLE DB Source Output"
+              startId="Package\Loading hotel data from SRC to STG\SRC_HOTEL.Outputs[OLE DB Source Output]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Loading Hotel Data From STG To DIM"
+      DTS:CreationName="Microsoft.Pipeline"
+      DTS:Description="Data Flow Task"
+      DTS:DTSID="{77033E0C-1688-401B-B211-91BCB4292488}"
+      DTS:ExecutableType="Microsoft.Pipeline"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Loading Hotel Data From STG To DIM"
+      DTS:TaskContact="Performs high-performance data extraction, transformation and loading;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <pipeline
+          version="1">
+          <components>
+            <component
+              refId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns"
+              componentClassID="Microsoft.DerivedColumn"
+              contactInfo="Derived Column;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Creates new column values by applying expressions to transformation input columns. Create new columns or overwrite existing ones. For example, concatenate the values from the 'first name' and 'last name' column to make a 'full name' column."
+              name="Adding SCD columns"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Inputs[Derived Column Input]"
+                  description="Input to the Derived Column Transformation"
+                  name="Derived Column Input">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output]"
+                  description="Default Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  name="Derived Column Output"
+                  synchronousInputId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Start_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Start_Date]"
+                      name="Start_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)"2021-01-01"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)"2021-01-01"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[End_Date]"
+                      dataType="dbDate"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[End_Date]"
+                      name="End_Date"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression">(DT_DBDATE)"9999-12-31"</property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression">(DT_DBDATE)"9999-12-31"</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Acrive_Flag]"
+                      dataType="bool"
+                      errorOrTruncationOperation="Computation"
+                      errorRowDisposition="FailComponent"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Acrive_Flag]"
+                      name="Acrive_Flag"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Expression"
+                          name="Expression"> TRUE </property>
+                        <property
+                          containsID="true"
+                          dataType="System.String"
+                          description="Derived Column Friendly Expression"
+                          expressionType="Notify"
+                          name="FriendlyExpression"> TRUE </property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Error Output]"
+                  description="Error Output of the Derived Column Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Derived Column Error Output"
+                  synchronousInputId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Inputs[Derived Column Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Hotel Data From STG To DIM\Check changed values"
+              componentClassID="Microsoft.ConditionalSplit"
+              contactInfo="Conditional Split;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;0"
+              description="Routes data rows to different outputs depending on the content of the data. Use conditions (SSIS expressions) to specify which rows are routed. For example, separate records that need to be cleaned from those that are ready to be loaded or route only a subset of records."
+              name="Check changed values"
+              usesDispositions="true">
+              <inputs>
+                <input
+                  refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input]"
+                  description="Input to the Conditional Split Transformation"
+                  name="Conditional Split Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Name"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[Address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Address"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Phone"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Email"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[Stars]"
+                      cachedDataType="i4"
+                      cachedName="Stars"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Stars]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[DIM_Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="DIM_Name"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Name]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[DIM_Address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="DIM_Address"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Address]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[DIM_Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="DIM_Phone"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Phone]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[DIM_Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="DIM_Email"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Email]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input].Columns[DIM_Stars]"
+                      cachedDataType="i4"
+                      cachedName="DIM_Stars"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Stars]" />
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Outputs[Old_Record]"
+                  description="Output 1 of the Conditional Split Transformation"
+                  errorOrTruncationOperation="Computation"
+                  errorRowDisposition="FailComponent"
+                  exclusionGroup="1"
+                  name="Old_Record"
+                  synchronousInputId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input]"
+                  truncationRowDisposition="FailComponent">
+                  <properties>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the expression. This expression version uses lineage identifiers instead of column names."
+                      name="Expression">#{Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Name]} == #{Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Name]} &amp;&amp; #{Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Address]} == #{Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Address]} &amp;&amp; #{Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Phone]} == #{Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Phone]} &amp;&amp; #{Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Email]} == #{Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Email]} &amp;&amp; #{Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Stars]} == #{Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Stars]}</property>
+                    <property
+                      containsID="true"
+                      dataType="System.String"
+                      description="Specifies the friendly version of the expression. This expression version uses column names."
+                      expressionType="Notify"
+                      name="FriendlyExpression">DIM_Name == Name &amp;&amp; DIM_Address == Address &amp;&amp; DIM_Phone == Phone &amp;&amp; DIM_Email == Email &amp;&amp; DIM_Stars == Stars</property>
+                    <property
+                      dataType="System.Int32"
+                      description="Specifies the position of the condition in the list of conditions that the transformation evaluates. The evaluation order is from the lowest to the highest value."
+                      name="EvaluationOrder">0</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Outputs[Conditional Split Default Output]"
+                  description="Default Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  name="Conditional Split Default Output"
+                  synchronousInputId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input]">
+                  <properties>
+                    <property
+                      dataType="System.Boolean"
+                      name="IsDefaultOut">true</property>
+                  </properties>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Outputs[Conditional Split Error Output]"
+                  description="Error Output of the Conditional Split Transformation"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Conditional Split Error Output"
+                  synchronousInputId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Check changed values.Outputs[Conditional Split Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Check changed values.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Check changed values.Outputs[Conditional Split Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Hotel Data From STG To DIM\Close old record"
+              componentClassID="Microsoft.OLEDBCommand"
+              contactInfo="OLE DB Command;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;2"
+              description="Runs an SQL statement for each row in a data flow. For example, call a 'new employee setup' stored procedure for each row in the 'new employees' table. Note: running an SQL statement for each row of a large data flow may take a long time."
+              name="Close old record"
+              usesDispositions="true"
+              version="2">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">UPDATE DIM.Hotel
+SET end_date = GETDATE(), acive_flag = 0
+WHERE Hotel_ID = ?
+</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading Hotel Data From STG To DIM\Close old record.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading Hotel Data From STG To DIM\Close old record.Inputs[OLE DB Command Input]"
+                  errorOrTruncationOperation="Command Execution"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Command Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Close old record.Inputs[OLE DB Command Input].Columns[Hotel_ID]"
+                      cachedDataType="i4"
+                      cachedName="Hotel_ID"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\Close old record.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Hotel_ID]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Close old record.Inputs[OLE DB Command Input].ExternalColumns[Param_0]"
+                      dataType="i4"
+                      name="Param_0">
+                      <properties>
+                        <property
+                          dataType="System.Int32"
+                          description="Parameter information.  Matches OLE DB's DBPARAMFLAGSENUM values."
+                          name="DBParamInfoFlags">17</property>
+                      </properties>
+                    </externalMetadataColumn>
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\Close old record.Outputs[OLE DB Command Output]"
+                  exclusionGroup="1"
+                  name="OLE DB Command Output"
+                  synchronousInputId="Package\Loading Hotel Data From STG To DIM\Close old record.Inputs[OLE DB Command Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\Close old record.Outputs[OLE DB Command Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Command Error Output"
+                  synchronousInputId="Package\Loading Hotel Data From STG To DIM\Close old record.Inputs[OLE DB Command Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Close old record.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Close old record.Outputs[OLE DB Command Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Close old record.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Close old record.Outputs[OLE DB Command Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL"
+              componentClassID="Microsoft.OLEDBDestination"
+              contactInfo="OLE DB Destination;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;4"
+              description="OLE DB Destination"
+              name="DEST_DIM_HOTEL"
+              usesDispositions="true"
+              version="4">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[DIM].[Hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">3</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the values supplied for identity columns will be copied to the destination. If false, values for identity columns will be auto-generated at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepIdentity">false</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Indicates whether the columns containing null will have null inserted in the destination. If false, columns containing null will have their default values inserted at the destination. Applies only if fast load is turned on."
+                  name="FastLoadKeepNulls">false</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies options to be used with fast load.  Applies only if fast load is turned on."
+                  name="FastLoadOptions">TABLOCK,CHECK_CONSTRAINTS</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies when commits are issued during data insertion.  A value of 0 specifies that one commit will be issued at the end of data insertion.  Applies only if fast load is turned on."
+                  name="FastLoadMaxInsertCommitSize">2147483647</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input]"
+                  errorOrTruncationOperation="Insert"
+                  errorRowDisposition="FailComponent"
+                  hasSideEffects="true"
+                  name="OLE DB Destination Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].Columns[Hotel_ID]"
+                      cachedDataType="i4"
+                      cachedName="Hotel_ID"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Hotel_ID]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Hotel_ID]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Name"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Name]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].Columns[Address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Address"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Address]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Phone"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Phone]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Email"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Email]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].Columns[Stars]"
+                      cachedDataType="i4"
+                      cachedName="Stars"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Stars]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Stars]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].Columns[Start_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="Start_Date"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Start_Date]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].Columns[End_Date]"
+                      cachedDataType="dbDate"
+                      cachedName="End_Date"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[End_Date]" />
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].Columns[Acrive_Flag]"
+                      cachedDataType="bool"
+                      cachedName="Acrive_Flag"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[acive_flag]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output].Columns[Acrive_Flag]" />
+                  </inputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Hotel_ID]"
+                      dataType="i4"
+                      name="Hotel_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Stars]"
+                      dataType="i4"
+                      name="Stars" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[start_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="start_date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[end_date]"
+                      dataType="wstr"
+                      length="10"
+                      name="end_date" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[acive_flag]"
+                      dataType="bool"
+                      name="acive_flag" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input].ExternalColumns[Hotel_Key]"
+                      dataType="i4"
+                      name="Hotel_Key" />
+                  </externalMetadataColumns>
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Outputs[OLE DB Destination Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="OLE DB Destination Error Output"
+                  synchronousInputId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Outputs[OLE DB Destination Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Outputs[OLE DB Destination Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel"
+              componentClassID="Microsoft.Lookup"
+              contactInfo="Lookup;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;6"
+              description="Joins additional columns to the data flow by looking up values in a table. For example, join to the 'employee id' column the employees table to get 'hire date' and 'employee name'. We recommend this transformation when the lookup table can fit into memory."
+              name="Mathcing ids with DIM_Hotel"
+              usesDispositions="true"
+              version="6">
+              <properties>
+                <property
+                  dataType="System.String"
+                  description="Specifies the SQL statement that generates the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from [DIM].[Hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies a SQL statement that uses parameters to generate the lookup table."
+                  expressionType="Notify"
+                  name="SqlCommandParam"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">select * from (select * from [DIM].[Hotel]) [refTable]
+where [refTable].[Hotel_ID] = ?</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the type of connection used to access the reference dataset."
+                  name="ConnectionType"
+                  typeConverter="LookupConnectionType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the cache type of the lookup table."
+                  name="CacheType"
+                  typeConverter="CacheType">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies how the Lookup transformation handles rows without matching entries in the reference data set."
+                  name="NoMatchBehavior"
+                  typeConverter="LookupNoMatchBehavior">1</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the percentage of the cache that is allocated for rows with no matching entries in the reference dataset."
+                  name="NoMatchCachePercentage">0</property>
+                <property
+                  dataType="System.Int32"
+                  description="Maximum Memory Usage for Reference Cache on a 32 bit platform."
+                  name="MaxMemoryUsage">25</property>
+                <property
+                  dataType="System.Int64"
+                  description="Maximum Memory Usage for Reference Cache on a 64 bit platform."
+                  name="MaxMemoryUsage64">25</property>
+                <property
+                  dataType="System.String"
+                  description="Indicates whether to reference metadata in an XML format."
+                  name="ReferenceMetadataXml">&lt;referenceMetadata&gt;&lt;referenceColumns&gt;&lt;referenceColumn name="Hotel_Key" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Hotel_ID" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="Name" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Address" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Phone" dataType="DT_STR" length="15" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Email" dataType="DT_STR" length="255" precision="0" scale="0" codePage="1252"/&gt;&lt;referenceColumn name="Stars" dataType="DT_I4" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="start_date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="end_date" dataType="DT_WSTR" length="10" precision="0" scale="0" codePage="0"/&gt;&lt;referenceColumn name="acive_flag" dataType="DT_BOOL" length="0" precision="0" scale="0" codePage="0"/&gt;&lt;/referenceColumns&gt;&lt;/referenceMetadata&gt;</property>
+                <property
+                  containsID="true"
+                  dataType="System.String"
+                  description="Specifies the list of lineage identifiers that map to the parameters that the SQL statement in the SQLCommand property uses. Entries in the list are separated by semicolons."
+                  name="ParameterMap">#{Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Hotel_ID]};</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Determines whether duplicate keys in the reference data should be treated as errors when full cache mode is used."
+                  name="TreatDuplicateKeysAsError">false</property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="Connection manager used to access lookup data."
+                  name="OleDbConnection" />
+              </connections>
+              <inputs>
+                <input
+                  refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Inputs[Lookup Input]"
+                  name="Lookup Input">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Inputs[Lookup Input].Columns[Hotel_ID]"
+                      cachedDataType="i4"
+                      cachedName="Hotel_ID"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Hotel_ID]">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table that a column joins."
+                          name="JoinToReferenceColumn">Hotel_ID</property>
+                        <property
+                          dataType="System.Null"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn" />
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output]"
+                  errorOrTruncationOperation="Lookup"
+                  exclusionGroup="1"
+                  name="Lookup Match Output"
+                  synchronousInputId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Name]"
+                      name="DIM_Name"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Name</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Address]"
+                      name="DIM_Address"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Address</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="15"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Phone]"
+                      name="DIM_Phone"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Phone</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Copy Column"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Email]"
+                      name="DIM_Email"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Email</property>
+                      </properties>
+                    </outputColumn>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Stars]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Copy Column"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output].Columns[DIM_Stars]"
+                      name="DIM_Stars"
+                      truncationRowDisposition="FailComponent">
+                      <properties>
+                        <property
+                          dataType="System.String"
+                          description="Specifies the column in the reference table from which a column is copied."
+                          name="CopyFromReferenceColumn">Stars</property>
+                      </properties>
+                    </outputColumn>
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup No Match Output]"
+                  description="The Lookup output that handles rows with no matching entries in the reference dataset. Use this output when the NoMatchBehavior property is set to &quot;Send rows with no matching entries to the no match output.&quot;"
+                  exclusionGroup="1"
+                  name="Lookup No Match Output"
+                  synchronousInputId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Inputs[Lookup Input]">
+                  <externalMetadataColumns />
+                </output>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Error Output]"
+                  exclusionGroup="1"
+                  isErrorOut="true"
+                  name="Lookup Error Output"
+                  synchronousInputId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Inputs[Lookup Input]">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel"
+              componentClassID="Microsoft.OLEDBSource"
+              contactInfo="OLE DB Source;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;7"
+              description="OLE DB Source"
+              name="SRC_STG_Hotel"
+              usesDispositions="true"
+              version="7">
+              <properties>
+                <property
+                  dataType="System.Int32"
+                  description="The number of seconds before a command times out.  A value of 0 indicates an infinite time-out."
+                  name="CommandTimeout">0</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the name of the database object used to open a rowset."
+                  name="OpenRowset">[STG].[Hotel]</property>
+                <property
+                  dataType="System.String"
+                  description="Specifies the variable that contains the name of the database object used to open a rowset."
+                  name="OpenRowsetVariable"></property>
+                <property
+                  dataType="System.String"
+                  description="The SQL command to be executed."
+                  name="SqlCommand"
+                  UITypeEditor="Microsoft.DataTransformationServices.Controls.ModalMultilineStringEditor">SELECT * FROM STG_Hotel</property>
+                <property
+                  dataType="System.String"
+                  description="The variable that contains the SQL command to be executed."
+                  name="SqlCommandVariable"></property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the column code page to use when code page information is unavailable from the data source."
+                  name="DefaultCodePage">1252</property>
+                <property
+                  dataType="System.Boolean"
+                  description="Forces the use of the DefaultCodePage property value when describing character data."
+                  name="AlwaysUseDefaultCodePage">false</property>
+                <property
+                  dataType="System.Int32"
+                  description="Specifies the mode used to access the database."
+                  name="AccessMode"
+                  typeConverter="AccessMode">0</property>
+                <property
+                  dataType="System.String"
+                  description="The mappings between the parameters in the SQL command and variables."
+                  name="ParameterMapping"></property>
+              </properties>
+              <connections>
+                <connection
+                  refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Connections[OleDbConnection]"
+                  connectionManagerID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}:external"
+                  connectionManagerRefId="Project.ConnectionManagers[ASEM.DW_Hotel_Project]"
+                  description="The OLE DB runtime connection used to access the database."
+                  name="OleDbConnection" />
+              </connections>
+              <outputs>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output]"
+                  name="OLE DB Source Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Hotel_ID]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Hotel_ID]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Hotel_ID]"
+                      name="Hotel_ID"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Name]"
+                      name="Name"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Address]"
+                      name="Address"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      length="15"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Phone]"
+                      name="Phone"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Email]"
+                      name="Email"
+                      truncationRowDisposition="FailComponent" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Stars]"
+                      dataType="i4"
+                      errorOrTruncationOperation="Conversion"
+                      errorRowDisposition="FailComponent"
+                      externalMetadataColumnId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Stars]"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Stars]"
+                      name="Stars"
+                      truncationRowDisposition="FailComponent" />
+                  </outputColumns>
+                  <externalMetadataColumns
+                    isUsed="True">
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Hotel_ID]"
+                      dataType="i4"
+                      name="Hotel_ID" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Name" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Address" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      name="Phone" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      name="Email" />
+                    <externalMetadataColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].ExternalColumns[Stars]"
+                      dataType="i4"
+                      name="Stars" />
+                  </externalMetadataColumns>
+                </output>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output]"
+                  isErrorOut="true"
+                  name="OLE DB Source Error Output">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Hotel_ID]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Hotel_ID]"
+                      name="Hotel_ID" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Stars]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[Stars]"
+                      name="Stars" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorCode]"
+                      name="ErrorCode"
+                      specialFlags="1" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Error Output].Columns[ErrorColumn]"
+                      name="ErrorColumn"
+                      specialFlags="2" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+            <component
+              refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new"
+              componentClassID="Microsoft.UnionAll"
+              contactInfo="Union All;Microsoft Corporation; Microsoft SQL Server; (C) Microsoft Corporation; All Rights Reserved; http://www.microsoft.com/sql/support;1"
+              description="Combines rows from multiple data flows without sorting. For example, add rows back to a data flow after correction of errors. If sorting is important, we recommend using the Merge transformation."
+              name="Union updated hotels with new"
+              version="1">
+              <inputs>
+                <input
+                  refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 1]"
+                  name="Union All Input 1">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 1].Columns[Hotel_ID]"
+                      cachedDataType="i4"
+                      cachedName="Hotel_ID"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Hotel_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Hotel_ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 1].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Name"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 1].Columns[Address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Address"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Address]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Address]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 1].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Phone"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Phone]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Phone]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 1].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Email"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Email]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Email]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 1].Columns[Stars]"
+                      cachedDataType="i4"
+                      cachedName="Stars"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Stars]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Stars]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 2]"
+                  hasSideEffects="true"
+                  name="Union All Input 2">
+                  <inputColumns>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 2].Columns[Hotel_ID]"
+                      cachedDataType="i4"
+                      cachedName="Hotel_ID"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Hotel_ID]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Hotel_ID]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 2].Columns[Name]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Name"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Name]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Name]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 2].Columns[Address]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Address"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Address]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Address]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 2].Columns[Phone]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="15"
+                      cachedName="Phone"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Phone]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Phone]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 2].Columns[Email]"
+                      cachedCodepage="1252"
+                      cachedDataType="str"
+                      cachedLength="255"
+                      cachedName="Email"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Email]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Email]}</property>
+                      </properties>
+                    </inputColumn>
+                    <inputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 2].Columns[Stars]"
+                      cachedDataType="i4"
+                      cachedName="Stars"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output].Columns[Stars]">
+                      <properties>
+                        <property
+                          containsID="true"
+                          dataType="System.Int32"
+                          description="Output column lineage ID"
+                          name="OutputColumnLineageID">#{Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Stars]}</property>
+                      </properties>
+                    </inputColumn>
+                  </inputColumns>
+                  <externalMetadataColumns />
+                </input>
+                <input
+                  refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 3]"
+                  dangling="true"
+                  hasSideEffects="true"
+                  name="Union All Input 3">
+                  <externalMetadataColumns />
+                </input>
+              </inputs>
+              <outputs>
+                <output
+                  refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1]"
+                  name="Union All Output 1">
+                  <outputColumns>
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Hotel_ID]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Hotel_ID]"
+                      name="Hotel_ID" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Name]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Name]"
+                      name="Name" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Address]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Address]"
+                      name="Address" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Phone]"
+                      codePage="1252"
+                      dataType="str"
+                      length="15"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Phone]"
+                      name="Phone" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Email]"
+                      codePage="1252"
+                      dataType="str"
+                      length="255"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Email]"
+                      name="Email" />
+                    <outputColumn
+                      refId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Stars]"
+                      dataType="i4"
+                      lineageId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1].Columns[Stars]"
+                      name="Stars" />
+                  </outputColumns>
+                  <externalMetadataColumns />
+                </output>
+              </outputs>
+            </component>
+          </components>
+          <paths>
+            <path
+              refId="Package\Loading Hotel Data From STG To DIM.Paths[Conditional Split Default Output]"
+              endId="Package\Loading Hotel Data From STG To DIM\Close old record.Inputs[OLE DB Command Input]"
+              name="Conditional Split Default Output"
+              startId="Package\Loading Hotel Data From STG To DIM\Check changed values.Outputs[Conditional Split Default Output]" />
+            <path
+              refId="Package\Loading Hotel Data From STG To DIM.Paths[Derived Column Output]"
+              endId="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL.Inputs[OLE DB Destination Input]"
+              name="Derived Column Output"
+              startId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Outputs[Derived Column Output]" />
+            <path
+              refId="Package\Loading Hotel Data From STG To DIM.Paths[Lookup Match Output]"
+              endId="Package\Loading Hotel Data From STG To DIM\Check changed values.Inputs[Conditional Split Input]"
+              name="Lookup Match Output"
+              startId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup Match Output]" />
+            <path
+              refId="Package\Loading Hotel Data From STG To DIM.Paths[Lookup No Match Output]"
+              endId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 1]"
+              name="Lookup No Match Output"
+              startId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Outputs[Lookup No Match Output]" />
+            <path
+              refId="Package\Loading Hotel Data From STG To DIM.Paths[OLE DB Command Output]"
+              endId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Inputs[Union All Input 2]"
+              name="OLE DB Command Output"
+              startId="Package\Loading Hotel Data From STG To DIM\Close old record.Outputs[OLE DB Command Output]" />
+            <path
+              refId="Package\Loading Hotel Data From STG To DIM.Paths[OLE DB Source Output]"
+              endId="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel.Inputs[Lookup Input]"
+              name="OLE DB Source Output"
+              startId="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel.Outputs[OLE DB Source Output]" />
+            <path
+              refId="Package\Loading Hotel Data From STG To DIM.Paths[Union All Output 1]"
+              endId="Package\Loading Hotel Data From STG To DIM\Adding SCD columns.Inputs[Derived Column Input]"
+              name="Union All Output 1"
+              startId="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new.Outputs[Union All Output 1]" />
+          </paths>
+        </pipeline>
+      </DTS:ObjectData>
+    </DTS:Executable>
+    <DTS:Executable
+      DTS:refId="Package\Truncate STG_Hotel"
+      DTS:CreationName="Microsoft.ExecuteSQLTask"
+      DTS:Description="Execute SQL Task"
+      DTS:DTSID="{93A3C248-19B0-4E14-A58A-1D163176E3AA}"
+      DTS:ExecutableType="Microsoft.ExecuteSQLTask"
+      DTS:LocaleID="-1"
+      DTS:ObjectName="Truncate STG_Hotel"
+      DTS:TaskContact="Execute SQL Task; Microsoft Corporation; SQL Server 2022; © 2022 Microsoft Corporation; All Rights Reserved;http://www.microsoft.com/sql/support/default.asp;1"
+      DTS:ThreadHint="0">
+      <DTS:Variables />
+      <DTS:ObjectData>
+        <SQLTask:SqlTaskData
+          SQLTask:Connection="{C070ED65-C9C1-48A3-A0D8-E046CD137252}"
+          SQLTask:SqlStatementSource="Truncate table STG.Hotel" xmlns:SQLTask="www.microsoft.com/sqlserver/dts/tasks/sqltask" />
+      </DTS:ObjectData>
+    </DTS:Executable>
+  </DTS:Executables>
+  <DTS:PrecedenceConstraints>
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint]"
+      DTS:CreationName=""
+      DTS:DTSID="{7B267FD2-1863-4A92-A0DA-573474E6BE4D}"
+      DTS:From="Package\Truncate STG_Hotel"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint"
+      DTS:To="Package\Loading hotel data from SRC to STG" />
+    <DTS:PrecedenceConstraint
+      DTS:refId="Package.PrecedenceConstraints[Constraint 1]"
+      DTS:CreationName=""
+      DTS:DTSID="{D22128CF-03A9-423D-944C-DA9942528B57}"
+      DTS:From="Package\Loading hotel data from SRC to STG"
+      DTS:LogicalAnd="True"
+      DTS:ObjectName="Constraint 1"
+      DTS:To="Package\Loading Hotel Data From STG To DIM" />
+  </DTS:PrecedenceConstraints>
+  <DTS:DesignTimeProperties><![CDATA[<?xml version="1.0"?>
+<!--This CDATA section contains the layout information of the package. The section includes information such as (x,y) coordinates, width, and height.-->
+<!--If you manually edit this section and make a mistake, you can delete it. -->
+<!--The package will still be able to load normally but the previous layout information will be lost and the designer will automatically re-arrange the elements on the design surface.-->
+<Objects
+  Version="8">
+  <!--Each node below will contain properties that do not affect runtime behavior.-->
+  <Package
+    design-time-name="Package">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="8" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="248,41.6"
+          Id="Package\Loading hotel data from SRC to STG"
+          TopLeft="367.499985396863,125.666667665376" />
+        <NodeLayout
+          Size="255.2,41.6"
+          Id="Package\Loading Hotel Data From STG To DIM"
+          TopLeft="372.499985198181,221.866668429905" />
+        <NodeLayout
+          Size="173.6,41.6"
+          Id="Package\Truncate STG_Hotel"
+          TopLeft="423.333316511579,19.9333334917492" />
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint]"
+          TopLeft="510.133316511579,61.5333334917492">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-18.633331114716,64.1333341736268"
+              Start="0,0"
+              End="-18.633331114716,56.6333341736268">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,28.0666670868134" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,28.0666670868134"
+                    Point2="0,32.0666670868134"
+                    Point3="-4,32.0666670868134" />
+                  <mssgle:LineSegment
+                    End="-14.633331114716,32.0666670868134" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-14.633331114716,32.0666670868134"
+                    Point2="-18.633331114716,32.0666670868134"
+                    Point3="-18.633331114716,36.0666670868134" />
+                  <mssgle:LineSegment
+                    End="-18.633331114716,56.6333341736268" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package.PrecedenceConstraints[Constraint 1]"
+          TopLeft="491.499985396863,167.266667665376">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="8.59999980131801,54.600000764529"
+              Start="0,0"
+              End="8.59999980131801,47.100000764529">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,23.3000003822645" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,23.3000003822645"
+                    Point2="0,27.3000003822645"
+                    Point3="4,27.3000003822645" />
+                  <mssgle:LineSegment
+                    End="4.59999980131801,27.3000003822645" />
+                  <mssgle:CubicBezierSegment
+                    Point1="4.59999980131801,27.3000003822645"
+                    Point2="8.59999980131801,27.3000003822645"
+                    Point3="8.59999980131801,31.3000003822645" />
+                  <mssgle:LineSegment
+                    End="8.59999980131801,47.100000764529" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </Package>
+  <TaskHost
+    design-time-name="Package\Loading hotel data from SRC to STG">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="4" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml">
+        <NodeLayout
+          Size="140.8,41.6"
+          Id="Package\Loading hotel data from SRC to STG\SRC_HOTEL"
+          TopLeft="454.166648619706,45.9333336983787" />
+        <NodeLayout
+          Size="163.2,41.6"
+          Id="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel"
+          TopLeft="414.999983509382,137.800001095136" />
+        <EdgeLayout
+          Id="Package\Loading hotel data from SRC to STG.Paths[OLE DB Source Output]"
+          TopLeft="524.566648619706,87.5333336983787">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-27.9666651103233,50.2666673967574"
+              Start="0,0"
+              End="-27.9666651103233,42.7666673967574">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.1333336983787" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.1333336983787"
+                    Point2="0,25.1333336983787"
+                    Point3="-4,25.1333336983787" />
+                  <mssgle:LineSegment
+                    End="-23.9666651103233,25.1333336983787" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-23.9666651103233,25.1333336983787"
+                    Point2="-27.9666651103233,25.1333336983787"
+                    Point3="-27.9666651103233,29.1333336983787" />
+                  <mssgle:LineSegment
+                    End="-27.9666651103233,42.7666673967574" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading hotel data from SRC to STG\DEST_STG_Hotel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading hotel data from SRC to STG\SRC_HOTEL">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <TaskHost
+    design-time-name="Package\Loading Hotel Data From STG To DIM">
+    <LayoutInfo>
+      <GraphLayout
+        Capacity="16" xmlns="clr-namespace:Microsoft.SqlServer.IntegrationServices.Designer.Model.Serialization;assembly=Microsoft.SqlServer.IntegrationServices.Graph" xmlns:mssgle="clr-namespace:Microsoft.SqlServer.Graph.LayoutEngine;assembly=Microsoft.SqlServer.Graph" xmlns:assembly="http://schemas.microsoft.com/winfx/2006/xaml" xmlns:mssgm="clr-namespace:Microsoft.SqlServer.Graph.Model;assembly=Microsoft.SqlServer.Graph">
+        <NodeLayout
+          Size="171.2,41.6"
+          Id="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL"
+          TopLeft="582,623" />
+        <NodeLayout
+          Size="220,41.6"
+          Id="Package\Loading Hotel Data From STG To DIM\Union updated hotels with new"
+          TopLeft="555,439.6" />
+        <NodeLayout
+          Size="176.8,41.6"
+          Id="Package\Loading Hotel Data From STG To DIM\Adding SCD columns"
+          TopLeft="562,522.8" />
+        <NodeLayout
+          Size="153.6,41.6"
+          Id="Package\Loading Hotel Data From STG To DIM\Close old record"
+          TopLeft="708,360" />
+        <NodeLayout
+          Size="209.6,41.6"
+          Id="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel"
+          TopLeft="519,155" />
+        <NodeLayout
+          Size="157.6,41.6"
+          Id="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel"
+          TopLeft="495,69" />
+        <NodeLayout
+          Size="183.2,41.6"
+          Id="Package\Loading Hotel Data From STG To DIM\Check changed values"
+          TopLeft="729,267" />
+        <EdgeLayout
+          Id="Package\Loading Hotel Data From STG To DIM.Paths[Union All Output 1]"
+          TopLeft="665,481.2">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-14.6,41.5999999999999"
+              Start="0,0"
+              End="-14.6,34.0999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,16.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,16.8"
+                    Point2="0,20.8"
+                    Point3="-4,20.8" />
+                  <mssgle:LineSegment
+                    End="-10.6,20.8" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-10.6,20.8"
+                    Point2="-14.6,20.8"
+                    Point3="-14.6,24.8" />
+                  <mssgle:LineSegment
+                    End="-14.6,34.0999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Hotel Data From STG To DIM.Paths[OLE DB Source Output]"
+          TopLeft="573.8,110.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="50,44.4"
+              Start="0,0"
+              End="50,36.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.2"
+                    Point2="0,22.2"
+                    Point3="4,22.2" />
+                  <mssgle:LineSegment
+                    End="46,22.2" />
+                  <mssgle:CubicBezierSegment
+                    Point1="46,22.2"
+                    Point2="50,22.2"
+                    Point3="50,26.2" />
+                  <mssgle:LineSegment
+                    End="50,36.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Hotel Data From STG To DIM.Paths[OLE DB Command Output]"
+          TopLeft="784.8,401.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-84.4666666666667,38"
+              Start="0,0"
+              End="-84.4666666666667,30.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,18.6353790613718" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,18.6353790613718"
+                    Point2="0,22.6353790613718"
+                    Point3="-4,22.6353790613718" />
+                  <mssgle:LineSegment
+                    End="-80.4666666666667,22.6353790613718" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-80.4666666666667,22.6353790613718"
+                    Point2="-84.4666666666667,22.6353790613718"
+                    Point3="-84.4666666666667,26.6353790613718" />
+                  <mssgle:LineSegment
+                    End="-84.4666666666667,30.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Hotel Data From STG To DIM.Paths[Lookup No Match Output]"
+          TopLeft="590.2,196.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="39.4666666666666,243"
+              Start="0,0"
+              End="39.4666666666666,235.5">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,117.553803181524" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,117.553803181524"
+                    Point2="0,121.553803181524"
+                    Point3="4,121.553803181524" />
+                  <mssgle:LineSegment
+                    End="35.4666666666666,121.553803181524" />
+                  <mssgle:CubicBezierSegment
+                    Point1="35.4666666666666,121.553803181524"
+                    Point2="39.4666666666666,121.553803181524"
+                    Point3="39.4666666666666,125.553803181524" />
+                  <mssgle:LineSegment
+                    End="39.4666666666666,235.5" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-36.0730533854167,126.553803181524,111.6127734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Hotel Data From STG To DIM.Paths[Lookup Match Output]"
+          TopLeft="657.4,196.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="163.2,70.4"
+              Start="0,0"
+              End="163.2,62.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,24.48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,24.48"
+                    Point2="0,28.48"
+                    Point3="4,28.48" />
+                  <mssgle:LineSegment
+                    End="159.2,28.48" />
+                  <mssgle:CubicBezierSegment
+                    Point1="159.2,28.48"
+                    Point2="163.2,28.48"
+                    Point3="163.2,32.48" />
+                  <mssgle:LineSegment
+                    End="163.2,62.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="33.40861328125,33.48,96.3827734375,11.609375"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Hotel Data From STG To DIM.Paths[Derived Column Output]"
+          TopLeft="650.4,564.4">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="17.2,58.5999999999999"
+              Start="0,0"
+              End="17.2,51.0999999999999">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,25.3" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,25.3"
+                    Point2="0,29.3"
+                    Point3="4,29.3" />
+                  <mssgle:LineSegment
+                    End="13.2,29.3" />
+                  <mssgle:CubicBezierSegment
+                    Point1="13.2,29.3"
+                    Point2="17.2,29.3"
+                    Point3="17.2,33.3" />
+                  <mssgle:LineSegment
+                    End="17.2,51.0999999999999" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <EdgeLabelCollection />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+        <EdgeLayout
+          Id="Package\Loading Hotel Data From STG To DIM.Paths[Conditional Split Default Output]"
+          TopLeft="820.6,308.6">
+          <EdgeLayout.Curve>
+            <mssgle:Curve
+              StartConnector="{assembly:Null}"
+              EndConnector="-35.8000000000001,51.4"
+              Start="0,0"
+              End="-35.8000000000001,43.9">
+              <mssgle:Curve.Segments>
+                <mssgle:SegmentCollection
+                  Capacity="5">
+                  <mssgle:LineSegment
+                    End="0,21.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="0,21.7"
+                    Point2="0,25.7"
+                    Point3="-4,25.7" />
+                  <mssgle:LineSegment
+                    End="-31.8000000000001,25.7" />
+                  <mssgle:CubicBezierSegment
+                    Point1="-31.8000000000001,25.7"
+                    Point2="-35.8000000000001,25.7"
+                    Point3="-35.8000000000001,29.7" />
+                  <mssgle:LineSegment
+                    End="-35.8000000000001,43.9" />
+                </mssgle:SegmentCollection>
+              </mssgle:Curve.Segments>
+            </mssgle:Curve>
+          </EdgeLayout.Curve>
+          <EdgeLayout.Labels>
+            <mssgm:EdgeLabel
+              BoundingBox="-88.51390625,30.7,141.2278125,11.658203125"
+              RelativePosition="Any" />
+          </EdgeLayout.Labels>
+        </EdgeLayout>
+      </GraphLayout>
+    </LayoutInfo>
+  </TaskHost>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading Hotel Data From STG To DIM\DEST_DIM_HOTEL">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading Hotel Data From STG To DIM\Mathcing ids with DIM_Hotel">
+    <Properties>
+      <Property>
+        <Name>OverwriteParamsSQLProp</Name>
+        <Value
+          type="q2:boolean">false</Value>
+      </Property>
+      <Property>
+        <Name>UsedTableName</Name>
+        <Value
+          type="q3:string">[DIM].[Hotel]</Value>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q4:int">0</Value>
+      </Property>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+  <PipelineComponentMetadata
+    design-time-name="Package\Loading Hotel Data From STG To DIM\SRC_STG_Hotel">
+    <Properties>
+      <Property>
+        <Name>DataSourceViewID</Name>
+      </Property>
+      <Property>
+        <Name>TableInfoObjectType</Name>
+        <Value
+          type="q2:string">Table</Value>
+      </Property>
+    </Properties>
+  </PipelineComponentMetadata>
+</Objects>]]></DTS:DesignTimeProperties>
+</DTS:Executable>

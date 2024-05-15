@@ -1,0 +1,12 @@
+<?xml version="1.0"?>
+<DTS:ConnectionManager xmlns:DTS="www.microsoft.com/SqlServer/Dts"
+  DTS:ObjectName="ASEM.DW_Hotel_Project"
+  DTS:DTSID="{C070ED65-C9C1-48A3-A0D8-E046CD137252}"
+  DTS:CreationName="OLEDB">
+  <DTS:ObjectData>
+    <DTS:ConnectionManager
+      DTS:ConnectRetryCount="1"
+      DTS:ConnectRetryInterval="5"
+      DTS:ConnectionString="Data Source=ASEM;Initial Catalog=DW_Hotel_Project;Provider=SQLOLEDB.1;Integrated Security=SSPI;Application Name=SSIS-BookingFact-{C070ED65-C9C1-48A3-A0D8-E046CD137252}ASEM.DW_Hotel_Project;Auto Translate=False;" />
+  </DTS:ObjectData>
+</DTS:ConnectionManager>
